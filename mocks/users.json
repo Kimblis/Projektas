@@ -1,0 +1,20 @@
+[
+  {
+    "userId": "319fa1e8-8a0c-41bd-9c9a-5ab828fd297e",
+    "name": "Jonas narsusis 5",
+    "createdAt": "2021-01-21 4:13:24",
+    "updatedAt": "2021-01-21 4:13:24"
+  },
+  {
+    "userId": "5c1dd3c7-3d8f-42b9-9ab8-ec0381d4ae7f",
+    "name": "Serzantas",
+    "createdAt": "2021-01-21 4:17:14",
+    "updatedAt": "2021-01-21 4:17:14"
+  },
+  {
+    "userId": "e83985cc-2379-4c59-8027-cfc220d33013",
+    "name": "Kaspisijus",
+    "createdAt": "2021-01-21 4:17:33",
+    "updatedAt": "2021-01-21 4:17:33"
+  }
+]

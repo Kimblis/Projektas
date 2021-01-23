@@ -1,0 +1,34 @@
+[
+  {
+    "messageId": "9707339f-c88e-483b-84dd-b26e1280ed78",
+    "userId": "e83985cc-2379-4c59-8027-cfc220d33013",
+    "message": "Siandien geriam",
+    "roomId": "4b76f8f6-a978-4349-a0d3-577a3b7d4e5d",
+    "createdAt": "2021-01-21 4:26:50",
+    "updatedAt": "2021-01-21 4:26:50"
+  },
+  {
+    "messageId": "8f11a173-6f9f-42a7-be57-1903515228e9",
+    "userId": "5c1dd3c7-3d8f-42b9-9ab8-ec0381d4ae7f",
+    "message": "Jeigu gersit gausit pizdi",
+    "roomId": "4b76f8f6-a978-4349-a0d3-577a3b7d4e5d",
+    "createdAt": "2021-01-21 4:28:22",
+    "updatedAt": "2021-01-21 4:28:22"
+  },
+  {
+    "messageId": "2ebe3846-814c-4514-bb58-0f2b2c2aaf6a",
+    "userId": "e83985cc-2379-4c59-8027-cfc220d33013",
+    "message": "Mama neleidzia gert, einu miegoti",
+    "roomId": "4b76f8f6-a978-4349-a0d3-577a3b7d4e5d",
+    "createdAt": "2021-01-21 4:28:43",
+    "updatedAt": "2021-01-21 4:28:43"
+  },
+  {
+    "messageId": "ad8261f5-498e-4928-8846-dc23ddfc0ffc",
+    "userId": "5c1dd3c7-3d8f-42b9-9ab8-ec0381d4ae7f",
+    "message": "Net nebandyk prisipist prie kazko",
+    "roomId": "4b76f8f6-a978-4349-a0d3-577a3b7d4e5d",
+    "createdAt": "2021-01-21 4:29:17",
+    "updatedAt": "2021-01-21 4:29:17"
+  }
+]

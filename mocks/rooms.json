@@ -1,0 +1,32 @@
+[
+  {
+    "roomId": "b0d88b61-c4ab-441c-bfb2-d63e928ff95b",
+    "name": "Room #1",
+    "createdAt": "2021-01-15 09:00:00",
+    "updatedAt": "2021-01-16 09:00:00"
+  },
+  {
+    "roomId": "4a053a64-6625-4124-b0d7-9c3080f9830c",
+    "name": "Saunus kambarys",
+    "createdAt": "2021-01-21 4:13:01",
+    "updatedAt": "2021-01-21 4:13:01"
+  },
+  {
+    "roomId": "5c3895d1-0662-4540-ace7-dcdb573381ac",
+    "name": "Maxima",
+    "createdAt": "2021-01-21 4:17:14",
+    "updatedAt": "2021-01-21 4:17:14"
+  },
+  {
+    "name": "Bendrikas",
+    "roomId": "4b76f8f6-a978-4349-a0d3-577a3b7d4e5d",
+    "updatedAt": "2021-01-23T08:04:18.945Z",
+    "createdAt": "2021-01-21 4:17:33"
+  },
+  {
+    "name": "Kambucha",
+    "roomId": "564d5ebf-50bd-442b-888c-497820405418",
+    "createdAt": "2021-01-23T08:06:11.135Z",
+    "updatedAt": "2021-01-23T08:06:11.135Z"
+  }
+]
