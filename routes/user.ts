@@ -1,15 +1,15 @@
-import express from 'express';
-import User from '../components/User';
+import express, { Request, Response } from 'express';
+import User from '../Controllers/User';
 
 const router = express.Router();
 
 /**
  * Gets all user
  */
-router.get('/', (req, res) => {
+router.get('/', (req: Request, res: Response) => {
   try {
     const users = User.getAllUsers();
-    res.json(users);
+    res.status(200).json(users);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -17,56 +17,61 @@ router.get('/', (req, res) => {
 
 /**
  * Gets user with given ID
+ * @param userId User ID
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', (req: Request, res: Response) => {
   try {
     const user = User.getUser(req.params.id);
-    res.json(user);
+    res.status(200).json(user);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 });
 
 /**
- * Creates a new user
+ * Creates a new user and returns created user
+ * @param name User name
  */
-router.post('/', (req, res) => {
-  const userName = req.body.name;
-  if (!userName) {
+router.post('/', (req: Request, res: Response) => {
+  const name = req.body.name;
+  if (!name) {
     res.status(400).json({ msg: 'You have to enter a User Name' });
   }
   try {
-    User.addUser(userName);
-    res.status(200).json({ msg: `New user with name ${userName} was created` });
+    const addedUser = User.addUser(name);
+    res.status(200).json(addedUser);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 });
 
 /**
- * Updates user with given ID
+ * Updates user with given ID and returns updated user
+ * @param userId User ID
+ * @param name New name of the user
  */
-router.put('/:id', (req, res) => {
+router.put('/:id', (req: Request, res: Response) => {
   try {
-    User.updateUser({
+    const updatedUser = User.updateUser({
       userId: req.params.id,
       name: req.body.name,
       updatedAt: new Date(),
       createdAt: new Date(),
     });
-    res.status(200).json({ msg: `updated user with id ${req.params.id}` });
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 });
 
 /**
- * Deletes user with given ID
+ * Deletes user with given ID and returns that user
+ * @param userId User ID
  */
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req: Request, res: Response) => {
   try {
-    User.deleteUser(req.params.id);
-    res.status(200).json({ msg: `User with id ${req.params.id} was deleted` });
+    const deletedUser = User.deleteUser(req.params.id);
+    res.status(200).json(deletedUser);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }

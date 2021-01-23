@@ -10,7 +10,7 @@ export enum Database {
 
 export const General = {
   buildPath(database: Database): string {
-    return path.join(`${__dirname}/../mocks/${database}.json`);
+    return path.join(`${__dirname}/../Mocks/${database}.json`);
   },
 
   /**

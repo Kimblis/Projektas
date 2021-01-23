@@ -1,11 +1,13 @@
 import express from 'express';
-import userRoute from './routes/user';
-import roomRoute from './routes/room';
-import messageRoute from './routes/message';
+import userRoute from './Routes/User';
+import roomRoute from './Routes/Room';
+import messageRoute from './Routes/Message';
+import logger from './Middleware/logger';
 
 const app = express();
 
 app.use(express.json());
+app.use(logger);
 
 app.use('/users', userRoute);
 app.use('/rooms', roomRoute);

@@ -84,7 +84,7 @@ export default {
    * @param roomId room that receives the message
    * @param message message being send
    */
-  addMessage(userId: string, roomId: string, message: string): void {
+  addMessage(userId: string, roomId: string, message: string): IMessage {
     const lastMessage = this.getLastMessage(roomId);
     if (lastMessage?.userId === userId) {
       const timeNow = new Date();
@@ -106,6 +106,7 @@ export default {
     const messages = (General.readFromDatabase(Database.Messages) as Array<IMessage>) || [];
     messages.push(newMessage);
     General.writeToDatabase(Database.Messages, messages);
+    return newMessage;
   },
 
   /**
@@ -122,18 +123,19 @@ export default {
    * Deletes message with given ID
    * @param messageId message ID
    */
-  deleteMessage(messageId: string): void {
+  deleteMessage(messageId: string): IMessage {
     const message = this.getMessage(messageId);
     const allMessages = General.readFromDatabase(Database.Messages) as Array<IMessage>;
     const messages = allMessages.filter((message) => message.messageId !== messageId);
     General.writeToDatabase(Database.Messages, messages);
+    return message;
   },
 
   /**
    * Updates given message
    * @param newUserInfo new message info
    */
-  updateMessage(newMessageInfo: IMessage): void {
+  updateMessage(newMessageInfo: IMessage): IMessage {
     const { messageId, roomId, userId, updatedAt, message: content } = newMessageInfo;
     const message = this.getMessage(messageId);
     this.deleteMessage(messageId);
@@ -148,5 +150,6 @@ export default {
     const messages = General.readFromDatabase(Database.Messages) as Array<IMessage>;
     messages.push(updatedMessage);
     General.writeToDatabase(Database.Messages, messages);
+    return updatedMessage;
   },
 };

@@ -1,15 +1,15 @@
-import express from 'express';
-import Message from '../components/Message';
+import express, { Request, Response } from 'express';
+import Message from '../Controllers/Message';
 
 const router = express.Router();
 
 /**
  * Gets last 10 messages across all rooms
  */
-router.get('/latest', (req, res) => {
+router.get('/latest', (req: Request, res: Response) => {
   try {
     const messages = Message.getLastTenMessages();
-    res.json(messages);
+    res.status(200).json(messages);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -17,11 +17,12 @@ router.get('/latest', (req, res) => {
 
 /**
  * Gets all messages in given room
+ * @param roomId room ID
  */
-router.get('/:id', (req, res) => {
+router.get('/:id', (req: Request, res: Response) => {
   try {
     const messages = Message.getAllMessagesByRoom(req.params.id);
-    res.json(messages);
+    res.status(200).json(messages);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
@@ -29,38 +30,46 @@ router.get('/:id', (req, res) => {
 
 /**
  * Gets last 10 messages sent by given user
+ * @param userId user ID
  */
-router.get('/latest/:id', (req, res) => {
+router.get('/latest/:id', (req: Request, res: Response) => {
   try {
     const messages = Message.getLastTenMessagesByUser(req.params.id);
-    res.json(messages);
+    res.status(200).json(messages);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 });
 
 /**
- * Creates a new message
+ * Creates a new message and returns that message
+ * @param message Message content
+ * @param roomID Room ID
+ * @param userID User ID
  */
-router.post('/', (req, res) => {
+router.post('/', (req: Request, res: Response) => {
   const { message, roomId, userId } = req.body;
   if (!message || !roomId || !userId) {
     res.status(400).json({ msg: 'You have to enter message name, user ID and room ID' });
   }
   try {
-    Message.addMessage(userId, roomId, message);
-    res.status(200).json({ msg: `New Message was added to room with id ${roomId}` });
+    const addedMessage = Message.addMessage(userId, roomId, message);
+    res.status(200).json(addedMessage);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 });
 
 /**
- * Updates message with given ID
+ * Updates message with given ID and returns updated message
+ * @param messageID: Message ID
+ * @param userID User ID
+ * @param roomID Room ID
+ * @param message New message content
  */
-router.put('/:id', (req, res) => {
+router.put('/:id', (req: Request, res: Response) => {
   try {
-    Message.updateMessage({
+    const updatedUser = Message.updateMessage({
       messageId: req.params.id,
       userId: req.body.userId,
       roomId: req.body.userId,
@@ -68,19 +77,20 @@ router.put('/:id', (req, res) => {
       updatedAt: new Date(),
       createdAt: new Date(),
     });
-    res.status(200).json({ msg: `updated Message with id ${req.params.id}` });
+    res.status(200).json(updatedUser);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
 });
 
 /**
- * Deletes message with given ID
+ * Deletes message with given ID and returns that message
+ * @param messageID Message ID
  */
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req: Request, res: Response) => {
   try {
-    Message.deleteMessage(req.params.id);
-    res.status(200).json({ msg: `Message with id ${req.params.id} was deleted` });
+    const deletedMessage = Message.deleteMessage(req.params.id);
+    res.status(200).json(deletedMessage);
   } catch (error) {
     res.status(400).json({ msg: error.message });
   }
